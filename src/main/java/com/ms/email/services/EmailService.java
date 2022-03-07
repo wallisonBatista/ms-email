@@ -28,6 +28,9 @@ public class EmailService {
             message.setTo(emailModel.getEmailTo());
             message.setSubject(emailModel.getSubject());
             message.setText(emailModel.getText());
+            emailSender.send(message);
+
+            emailModel.setStatusEmail(StatusEmail.SENT);
         } catch (MailException e) {
             emailModel.setStatusEmail((StatusEmail.ERROR));
         } finally {
